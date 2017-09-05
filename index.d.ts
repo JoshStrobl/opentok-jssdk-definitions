@@ -133,12 +133,12 @@ declare namespace OT {
 
 	export interface SharedUserProperties {
 		fitMode?: "cover" | "contain";
-		height?: number;
+		height?: number | string;
 		insertDefaultUI?: boolean;
 		insertMode?: "replace" | "after" | "before" | "append";
 		showControls?: boolean;
 		style?: StreamStyleProperties;
-		width?: number;
+		width?: number | string;
 	}
 
 	export interface SharedStreamData {
