@@ -42,6 +42,21 @@ declare namespace OT {
 		title: string;
 	}
 
+	export interface OnOffOnce {
+		// Off
+		off(): void;
+		off(type?: string, handler?: Function, context?: Object): void;
+		off(context: EventContext): void;
+
+		// On
+		on(type?: string, handler?: Function, context?: Object): void;
+		on(context: EventContext): void;
+
+		// Once
+		once(type?: string, handler?: Function, context?: Object): void;
+		once(context: EventContext): void;
+	}
+
 	export interface Publisher extends SharedStreamData {
 		accessAllowed: Event;
 		accessDenied: Event;
@@ -101,7 +116,7 @@ declare namespace OT {
 		data: string;
 	}
 
-	export interface Session {
+	export interface Session extends OnOffOnce {
 		archiveStarted: ArchiveEvent;
 		archiveStopped: ArchiveEvent;
 		capabilities: Capabilities;
@@ -141,7 +156,7 @@ declare namespace OT {
 		width?: number | string;
 	}
 
-	export interface SharedStreamData {
+	export interface SharedStreamData extends OnOffOnce {
 		audioLevelUpdated: AudioLevelUpdatedEvent;
 		connected: Event;
 		destroyed: Event
@@ -152,19 +167,6 @@ declare namespace OT {
 		videoElementCreated: VideoElementCreatedEvent;
 
 		// #region Functions
-
-		// Off
-		off(): void;
-		off(type?: string, handler?: Function, context?: Object): void;
-		off(context: EventContext): void;
-
-		// On
-		on(type?: string, handler?: Function, context?: Object): void;
-		on(context: EventContext): void;
-
-		// Once
-		once(type?: string, handler?: Function, context?: Object): void;
-		once(context: EventContext): void;
 
 		// SetStyle
 		setStyle(style: "audioLevelDisplayMode", value: "auto" | "off" | "on"): Publisher;
