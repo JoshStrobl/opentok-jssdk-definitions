@@ -135,13 +135,15 @@ declare namespace OT {
 		// Functions
 		connect(token: string, completionHandler: (error: Error) => void): void;
 		disconnect(): void;
-		forceDisconnect(connection: SessionConnection, completionHandler: (error: Error) => void): void;
+		forceDisconnect(connection: SessionConnection, completionHandler?: (error: Error) => void): void;
 		forceUnpublish(stream: Stream, completionHandler: (error: Error) => void): void;
 		getPublisherForStream(stream: Stream): Publisher;
 		getSubscribersForStream(stream: Stream): Subscriber[];
 		publish(publisher: Publisher, completionHandler: (error: Error) => void): Publisher;
 		signal(data: SignalData, completionHandler: (error: Error) => void): void;
 		subscribe(stream: Stream, targetElement?: HTMLElement, properties?: SubscribeProperties, completionHandler?: (error: Error) => void): Subscriber;
+		subscribe(stream: Stream, targetElement?: string, properties?: SubscribeProperties, completionHandler?: (error: Error) => void): Subscriber;
+		subscribe(stream: Stream, properties?: SubscribeProperties, completionHandler?: (error: Error) => void): Subscriber;
 		unpublish(publisher: Publisher): void;
 		unsubscribe(subscriber: Subscriber): void;
 	}
@@ -183,7 +185,7 @@ declare namespace OT {
 	}
 
 	export interface SignalData extends Object {
-		to: Connection;
+		to?: Connection;
 		data: string;
 		retryAfterReconnect?: boolean;
 		type: string;
