@@ -85,7 +85,6 @@ declare namespace OT {
 		audioFallbackEnabled?: boolean;
 		audioSource?: string | null | false;
 		disableAudioProcessing?: boolean;
-		frameRate?: 1 | 7 | 15 | 30;
 		maxResolution?: StreamVideoDimensions;
 		mirror?: boolean;
 		name?: string;
@@ -150,6 +149,7 @@ declare namespace OT {
 
 	export interface SharedUserProperties {
 		fitMode?: "cover" | "contain";
+		frameRate?: 1 | 7 | 15 | 30;
 		height?: number | string;
 		insertDefaultUI?: boolean;
 		insertMode?: "replace" | "after" | "before" | "append";
