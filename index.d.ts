@@ -192,7 +192,7 @@ declare namespace OT {
 	}
 
 	export interface SignalEvent extends Event {
-		data: SignalData;
+		data: string;
 		from: Connection;
 		type: string;
 	}
@@ -307,6 +307,7 @@ declare namespace OT {
 	function checkScreenSharingCapability(callback: (options: OT.ScreenSharingCapability) => void): void;
 	function checkSystemRequirements(): 0 | 1;
 	function getDevices(callback: (error: Error | null, devices: OT.Device[]) => void): void;
+	function initPublisher(key: string, targetElement: HTMLElement | string | undefined, properties: OT.PublisherProperties, completionHandler: (error: Error | null) => void): OT.Publisher;
 	function initPublisher(targetElement: HTMLElement | string, properties: OT.PublisherProperties, completionHandler: (error: Error | null) => void): OT.Publisher;
 	function initSession(apiKey: string, sessionId: string, options?: OT.InitOptions): OT.Session;
 	function log(message: string): void;
